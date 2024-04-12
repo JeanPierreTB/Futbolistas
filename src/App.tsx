@@ -51,13 +51,28 @@ function App() {
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <ul>
-          {futbolistas.map(futbolista => (
-            <li key={futbolista.id} onClick={() => mostrarInfoJugador(futbolista)}>
-              <strong>{futbolista.nombres} {futbolista.apellidos}</strong> - {futbolista.posicion.nombrePosicion}
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Fecha de nacimiento</th>
+              <th>Posición</th>
+            </tr>
+          </thead>
+          <tbody>
+            {futbolistas.map(futbolista => (
+              <tr key={futbolista.id} onClick={() => mostrarInfoJugador(futbolista)}>
+                <td>{futbolista.id}</td>
+                <td>{futbolista.nombres}</td>
+                <td>{futbolista.apellidos}</td>
+                <td>{futbolista.fechaNacimiento.substring(0, 10)}</td>
+                <td>{futbolista.posicion.nombrePosicion}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
